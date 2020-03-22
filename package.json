@@ -4,10 +4,20 @@
     "authors": "author",
     "version": "1.0.0",
     "main": "pathToMain",
+    "resolutions": {
+        "minimist": "^1.2.5npm"
+    },
+    "scripts": {
+        "preinstall": "npx npm-force-resolutions"
+    },
     "dependencies": {
         "bootstrap": "^4.3.1",
-        "handlebars": "^4.5.3",
+        "handlebars": "^4.7.3",
         "jquery": "^3.4.1",
+        "popper.js": "^1.16.1",
         "sammy": "^0.7.6"
+    },
+    "devDependencies": {
+        "minimist": "^1.2.5"
     }
 }

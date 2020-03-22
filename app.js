@@ -1,6 +1,8 @@
-import { getHome } from "./controllers/homeController.js"
-import { getRegister, getLogin, postRegister, logoutUser, postLogin, getProfile } from "./controllers/userController.js";
-import { getCreate, postCreate, getDetails, closeEvent, joinToEvent, getEdit, postEdit } from "./controllers/eventController.js";
+import { getHome } from "./controllers/homeController.js";
+import { getRegister, getLogin, postLogin, logoutUser, postRegister, getProfile } from "./controllers/userController.js";
+import { getCreate, postCreate, getDetails, getEdit, postEdit, closeEvent, joinEvent } from "./controllers/eventController.js";
+
+
 
 const app = Sammy("body", function () {
     this.use('Handlebars', 'hbs');
@@ -11,7 +13,7 @@ const app = Sammy("body", function () {
     this.post('#/login', postLogin);
 
     this.get('#/register', getRegister)
-    this.post('#/register', postRegister);
+    this.post('#/register', postRegister)
 
     this.get('#/logout', logoutUser);
     this.get('#/profile', getProfile);
@@ -26,8 +28,18 @@ const app = Sammy("body", function () {
 
     this.get('#/close/:id', closeEvent);
 
-    this.get('#/join/:id', joinToEvent);
-    
+    this.get('#/join/:id', joinEvent);
+
 })
 
 app.run("#/home")
+
+document.addEventListener('click', function (event) {
+    if (event.target.id === 'successBox') {
+        event.target.style.display = 'none';
+    }
+
+    if (document.getElementById('errorBox') !== null) {
+        document.getElementById('errorBox').style.display = 'none';
+    }
+})
